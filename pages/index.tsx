@@ -1,14 +1,14 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
-import Login from './login/login';
+import Home from './home';
 
-export default function Home() {
+export default function Index() {
   return (
     <Grid
       container
       component="main"
     >
-      <Login />
+      <Home />
     </Grid>
   );
 }

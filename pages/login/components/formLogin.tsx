@@ -11,17 +11,23 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from 'axios';
 
 const theme = createTheme();
 
 export default function FormLogin() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    const response = await axios.post('/api/auth/login', {
+      email: data.get('email'),
+      password: data.get('password'),
+    });
     console.log({
       email: data.get('email'),
       password: data.get('password'),
     });
+    console.log(response);
   };
 
   return (
