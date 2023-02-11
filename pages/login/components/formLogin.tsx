@@ -12,22 +12,25 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
+import useNotification from '@/pages/hooks/useNotification';
 
 const theme = createTheme();
 
 export default function FormLogin() {
+  const { notification } = useNotification();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const response = await axios.post('/api/auth/login', {
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-    console.log(response);
+    try {
+      const response = await axios.post('/api/auth/login', {
+        email: data.get('email'),
+        password: data.get('password'),
+      });
+      return notification(response.data.message, 'success');
+    } catch (error: any) {
+      const message = error.response.data.message || 'Something went wrong';
+      return notification(message, 'error');
+    }
   };
 
   return (
