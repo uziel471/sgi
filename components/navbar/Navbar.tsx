@@ -17,7 +17,7 @@ function Topbar() {
     >
       <Toolbar>
         <Typography variant="h6">
-          Que bendición, aaaahhh
+          SGI
         </Typography>
       </Toolbar>
     </AppBar>

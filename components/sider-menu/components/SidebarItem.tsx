@@ -7,7 +7,7 @@ function SidebarItem({ item }: any) {
   return (
     item.sidebarProps && item.path ? (
       <ListItemButton
-        component={Link}
+        component={Link as any}
         to={item.path}
         sx={{
           '&: hover': {
