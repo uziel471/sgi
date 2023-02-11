@@ -13,7 +13,7 @@ export default async function login(req: any, res: any) {
       .exec();
 
     if (!user) {
-      return res.status(401).json({ error: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
     const token = jwt.sign({
       email,
@@ -28,8 +28,8 @@ export default async function login(req: any, res: any) {
       path: '/',
     });
     res.setHeader('Set-Cookie', serializedToken);
-    return res?.json('login success');
+    return res?.json({ user, message: 'Login success' });
   } catch (error) {
-    return res.status(500).json({ error: 'Something went wrong' });
+    return res.status(500).json({ message: 'Something went wrong' });
   }
 }
