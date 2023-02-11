@@ -12,7 +12,16 @@ const appRoutes: RouteType[] = [
     path: '/',
     element: <h1>Hola mundo</h1>,
     sidebarProps: {
-      displayText: 'Root',
+      displayText: 'Contractors',
+      icon: <CatchingPokemonIcon />,
+    },
+  },
+  {
+    key: 3,
+    path: '/Users',
+    element: <h1>Hola mundo</h1>,
+    sidebarProps: {
+      displayText: 'Users',
       icon: <CatchingPokemonIcon />,
     },
   },

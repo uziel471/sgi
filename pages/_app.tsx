@@ -6,9 +6,12 @@ import MainLayout from '../layout/container/Container';
 export default function App({ Component, pageProps }: AppProps) {
   // remove in the last step
   return (
-    <MainLayout>
-      {/* eslint-disable-next-line react/jsx-props-no-spreading  */}
-      <Component {...pageProps} />
-    </MainLayout>
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    Component.name === 'Login' ? <Component {...pageProps} /> : (
+      <MainLayout>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading  */}
+        <Component {...pageProps} />
+      </MainLayout>
+    )
   );
 }
